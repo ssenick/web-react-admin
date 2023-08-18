@@ -5,7 +5,6 @@ import {Box, IconButton, Typography, useTheme} from "@mui/material";
 import {tokens} from "../../../theme";
 import {userImage} from "../../../assets";
 import ItemMenu from "./ItemMenu";
-import Icon from '@mui/material/Icon';
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined";
 import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
@@ -25,19 +24,19 @@ const MySidebar = () => {
    const colors = tokens(theme.palette.mode)
    const [isCollapsed, setIsCollapsed] = useState(false);
    const [selected, setSelected] = useState('Dashboard');
-   console.log(isCollapsed)
    return (
       <Sidebar
-         collapsed={isCollapsed}
+         collapsed={isCollapsed }
          rootStyles={{
             [`&.ps-sidebar-root`]: {
                border: 'none'
             },
             [`.MuiBox-root`]: {
-               // paddingLeft:'0px'
+               // paddingLeft:'10px'
             },
             [`.ps-sidebar-container`]: {
                backgroundColor: `${colors.primary[400]}`,
+               minHeight:'100%',
             },
             [`.ps-sidebar-container::-webkit-scrollbar `]: {
                width: "5px ",
