@@ -6,19 +6,8 @@ import {Route, Routes} from "react-router-dom";
 import MySidebar from "./scenes/global/MySidebar/MySidebar";
 import {Dashboard} from "./scenes/pages/Dashboard";
 import {Team} from "./scenes/pages/Team";
+import {Contacts} from "./scenes/pages/Contacts";
 
-// import Sidebar from "./scenes/pages/global/Sidebar";
-// import Dashboard from "./scenes/global/pages/Dashboard";
-// import Team from "./scenes/global/pages/Team";
-// import Invoices from "./scenes/global/pages/Invoices";
-// import Contacts from "./scenes/global/pages/Contacts";
-// import Bar from "./scenes/global/pages/Bar";
-// import Form from "./scenes/global/pages/Form";
-// import Line from "./scenes/global/pages/Line";
-// import Pie from "./scenes/global/pages/Pie";
-// import FAQ from "./scenes/global/pages/faq";
-// import Geography from "./scenes/pages/global/Geography";
-// import Calendar from "./scenes/pages/global/Calendar";
 
 
 function App() {
@@ -35,8 +24,8 @@ function App() {
                         <Routes>
                            <Route index element={<Dashboard/>}/>
                            <Route path='team' element={<Team/>} />
+                           <Route path='contacts' element={<Contacts/>} />
                            {/*<Route path='invoices' element={<Invoices/>} />*/}
-                           {/*<Route path='contacts' element={<Contacts/>} />*/}
                            {/*<Route path='bar' element={<Bar/>} />*/}
                            {/*<Route path='form' element={<Form/>} />*/}
                            {/*<Route path='line' element={<Line/>} />*/}
