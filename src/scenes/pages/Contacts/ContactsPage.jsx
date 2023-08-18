@@ -1,12 +1,10 @@
 import React from 'react';
-import {Box, Typography, useTheme} from "@mui/material";
+import {Box, useTheme} from "@mui/material";
 import Header from "../../../components/Header";
 import {tokens} from "../../../theme";
 import {DataGrid,GridToolbar} from "@mui/x-data-grid";
 import {mockDataContacts} from "../../../data/mockData";
-import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
-import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
-import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
+
 
 const ContactsPage = () => {
    const theme = useTheme()
