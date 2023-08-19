@@ -1,15 +1,16 @@
-import React from 'react';
-import {Box, useTheme} from "@mui/material";
+import React, {useMemo} from 'react';
+import {Box, useMediaQuery, useTheme} from "@mui/material";
 import Header from "../../../components/Header";
 import {tokens} from "../../../theme";
-import {DataGrid,GridToolbar} from "@mui/x-data-grid";
+import {DataGrid, GridToolbar} from "@mui/x-data-grid";
 import {mockDataContacts} from "../../../data/mockData";
 
 
 const ContactsPage = () => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
-   const columns = [
+   const matches = useMediaQuery('(min-width:600px)');
+   const columns = useMemo(() => [
       {field: 'id', headerName: 'ID'},
       {field: 'registrarId', headerName: 'Registrar Id'},
       {field: 'name', headerName: 'Name', flex: 1, cellClassName: 'name-column--cell'},
@@ -19,12 +20,13 @@ const ContactsPage = () => {
       {field: 'address', headerName: 'Address', flex: 1},
       {field: 'city', headerName: 'City', flex: 1},
       {field: 'zipCode', headerName: 'Zip Code', flex: 1}
-   ]
+   ], [])
    return (
-      <Box m='20px'>
+      <Box m={matches ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='CONTACTS' subtitle='List of Contacts for Future Reference'/>
          <Box
-            height='75vh'
+            // height='75vh'
+            flex=' 1 1 auto'
             sx={{
                '& .MuiDataGrid-root': {
                   border: 'none !important'
@@ -51,10 +53,10 @@ const ContactsPage = () => {
                   width: "10px ",
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar-track `]: {
-                  background:`${colors.blueAccent[800]}`,
+                  background: `${colors.blueAccent[800]}`,
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb `]: {
-                  background:`${colors.blueAccent[600]}`,
+                  background: `${colors.blueAccent[600]}`,
                },
 
             }}

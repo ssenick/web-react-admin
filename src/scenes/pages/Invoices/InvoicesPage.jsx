@@ -1,5 +1,5 @@
-import React from 'react';
-import {Box,Typography, useTheme} from "@mui/material";
+import React, {useMemo} from 'react';
+import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Header from "../../../components/Header";
 import {tokens} from "../../../theme";
 import {DataGrid} from "@mui/x-data-grid";
@@ -9,26 +9,28 @@ import {mockDataInvoices} from "../../../data/mockData";
 const Invoices = () => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
-   const columns = [
+   const matches = useMediaQuery('(min-width:600px)');
+   const columns = useMemo(()=>[
       {field: 'id', headerName: 'ID'},
-      {field: 'name', headerName: 'Name', flex: 1, cellClassName: 'name-column--cell'},
-      {field: 'email', headerName: 'Email', flex: 1},
-      {field: 'phone', headerName: 'Phone', flex: 1},
-      {field: 'cost', headerName: 'Cost', flex: 1, renderCell: (params)=>(
-         <Typography color={colors.greenAccent[500]}>
-            ${params.row.cost}
-         </Typography>
+      {field: 'name', headerName: 'Name', flex: 1,minWidth: 140, cellClassName: 'name-column--cell'},
+      {field: 'email', headerName: 'Email', flex: 1,minWidth: 200,},
+      {field: 'phone', headerName: 'Phone', flex: 1,minWidth: 100,},
+      {field: 'cost', headerName: 'Cost', flex: 1,minWidth: 70, renderCell: (params)=>(
+            <Typography color={colors.greenAccent[500]}>
+               ${params.row.cost}
+            </Typography>
          )},
-      {field: 'date', headerName: 'Date', flex: 1},
-   ]
+      {field: 'date', headerName: 'Date', flex: 1, minWidth: 90,},
+   ],[])
    return (
-      <Box m='20px'>
+      <Box m={matches ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='INVOICES' subtitle='List of Invoice Balances'/>
          <Box
-            height='75vh'
+            flex= ' 1 1 auto'
             sx={{
                '& .MuiDataGrid-root': {
-                  border: 'none !important'
+                  border: 'none !important',
+
                },
                '& .MuiDataGrid-columnHeaders': {
                   border: 'none !important',
@@ -36,7 +38,6 @@ const Invoices = () => {
                },
                '& .MuiDataGrid-cell': {
                   border: 'none !important',
-
                },
                '& .MuiDataGrid-virtualScroller': {
                   backgroundColor: colors.primary[400]

@@ -11,7 +11,7 @@ import React from "react";
       <MenuItem
          component={ <Link to={to}/>}
          icon={icon}
-         active={selected === title}
+         active={selected === to}
          onClick={() => setSelected(title)}>
          <Typography>{title}</Typography>
       </MenuItem>

@@ -1,7 +1,7 @@
 import React, {useContext} from 'react';
 
 import {ColorModeContext, tokens} from "../../theme";
-import {Box, IconButton, InputBase, useTheme} from "@mui/material";
+import {Box, IconButton, InputBase, useMediaQuery, useTheme} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
@@ -13,12 +13,13 @@ import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined';
 const TopBar = () => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
+   const matches = useMediaQuery('(min-width:600px)');
    const colorMode = useContext(ColorModeContext)
    return (
-      <Box display='flex' justifyContent='space-between' p={2}>
-         <Box display='flex' bgcolor={colors.primary[400]}>
+      <Box display='flex' justifyContent={matches ? 'space-between' : 'flex-end'} flexWrap='wrap' gap='10px'  p={2}>
+         <Box display='flex' bgcolor={colors.primary[400]} width={!matches ? '100%' : undefined}>
             <InputBase sx={{ml: 2, flex: 1}} placeholder='Search'/>
-            <IconButton type='button' sx={{p: 1}}>
+            <IconButton type='button'  sx={{p: 1}}>
                <SearchIcon/>
             </IconButton>
          </Box>

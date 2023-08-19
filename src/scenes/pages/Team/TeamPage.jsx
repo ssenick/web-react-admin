@@ -1,5 +1,5 @@
-import React from 'react';
-import {Box, Typography, useTheme} from "@mui/material";
+import React, {useEffect, useMemo} from 'react';
+import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Header from "../../../components/Header";
 import {tokens} from "../../../theme";
 import {DataGrid} from "@mui/x-data-grid";
@@ -11,7 +11,8 @@ import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 const TeamPage = () => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
-   const columns = [
+   const matches = useMediaQuery('(min-width:600px)');
+   const columns = useMemo(()=>[
       {field: 'id', headerName: 'ID'},
       {field: 'name', headerName: 'Name', flex: 1, cellClassName: 'name-column--cell'},
       {field: 'age', headerName: 'Age', type: "number", headerAlign: 'left', align: 'left'},
@@ -37,12 +38,14 @@ const TeamPage = () => {
             )
          }
       },
-   ]
+   ],[])
+
    return (
-      <Box m='20px'>
+      <Box m={matches ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='TEAM' subtitle='Managing the Team Members'/>
          <Box
-            height='75vh'
+            flex= ' 1 1 auto'
+            // height='75vh'
             sx={{
                '& .MuiDataGrid-root': {
                   border: 'none !important'

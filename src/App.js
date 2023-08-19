@@ -1,8 +1,8 @@
 import React, {Suspense} from "react";
+import {Route, Routes} from "react-router-dom";
 import {ColorModeContext, useMode} from "./theme";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import TopBar from "./scenes/global/TopBar";
-import {Route, Routes} from "react-router-dom";
 import MySidebar from "./scenes/global/MySidebar/MySidebar";
 import {Dashboard} from "./scenes/pages/Dashboard";
 import {Team} from "./scenes/pages/Team";
