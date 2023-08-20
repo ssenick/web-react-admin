@@ -5,11 +5,11 @@ body,
 #root,
 .app,
 .content{
-    min-height: 100vh;
+    height: 100vh;
     /*height: 100%;*/
     width: 100%;
     font-family: 'Source Sans 3', sans-serif;
-
+    overflow: hidden;
 }
 
 
@@ -22,25 +22,38 @@ body,
 .content{
     flex: 1 1 auto;
     min-width: 0;
+    overflow: auto;
     /*display: flex;*/
     /*flex-direction: column;*/
+
+}
+.content::-webkit-scrollbar {
+    width: 5px ;
+}
+
+.content::-webkit-scrollbar-track {
+    background: #2a2d64;
+}
+
+.content::-webkit-scrollbar-thumb {
+    background: #535ac8;
 }
 /*.content > :last-child{*/
 /*      flex: 1 1 auto;*/
 /*}*/
 
-::-webkit-scrollbar {
-    width: 10px;
-}
+/*::-webkit-scrollbar {*/
+/*    width: 10px;*/
+/*}*/
 
-::-webkit-scrollbar-track {
-    background: #e0e0e0;
-}
+/*::-webkit-scrollbar-track {*/
+/*    background: #e0e0e0;*/
+/*}*/
 
-::-webkit-scrollbar-thumb {
-    background: #888;
-}
+/*::-webkit-scrollbar-thumb {*/
+/*    background: #888;*/
+/*}*/
 
-::-webkit-scrollbar-track:hover {
-    background: #555;
-}
+/*::-webkit-scrollbar-track:hover {*/
+/*    background: #555;*/
+/*}*/

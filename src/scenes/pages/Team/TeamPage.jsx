@@ -66,7 +66,8 @@ const TeamPage = () => {
                   backgroundColor: colors.blueAccent[700],
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar `]: {
-                  width: "10px ",
+                  width: "5px ",
+                  height: '5px'
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar-track `]: {
                   background:`${colors.blueAccent[800]}`,

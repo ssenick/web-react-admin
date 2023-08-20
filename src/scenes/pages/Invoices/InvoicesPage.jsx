@@ -53,7 +53,8 @@ const Invoices = () => {
                   color: `${colors.grey[100]} !important`
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar `]: {
-                  width: "10px ",
+                  width: "5px ",
+                  height: '5px'
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar-track `]: {
                   background:`${colors.blueAccent[800]}`,

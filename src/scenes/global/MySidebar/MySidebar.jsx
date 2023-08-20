@@ -52,7 +52,8 @@ const MySidebar = () => {
             rootStyles={{
                [`&.ps-sidebar-root`]: {
                   border: 'none',
-                  height:'100%',
+                  // height:'100%',
+                  height:'100vh',
                   minWidth: '0'
                },
                [`.MuiBox-root`]: {

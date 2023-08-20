@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {Box, useMediaQuery, useTheme} from "@mui/material";
+import {Box, LinearProgress, useMediaQuery, useTheme} from "@mui/material";
 import Header from "../../../components/Header";
 import {tokens} from "../../../theme";
 import {DataGrid, GridToolbar} from "@mui/x-data-grid";
@@ -10,6 +10,8 @@ const ContactsPage = () => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
    const matches = useMediaQuery('(min-width:600px)');
+   const matches_800 = useMediaQuery('(min-width:800px)');
+
    const columns = useMemo(() => [
       {field: 'id', headerName: 'ID',flex: 0.5},
       {field: 'registrarId', headerName: 'Registrar Id'},
@@ -49,8 +51,12 @@ const ContactsPage = () => {
                '& .MuiDataGrid-toolbarContainer .MuiButton-text': {
                   color: `${colors.grey[100]} !important`
                },
+               '& .MuiDataGrid-toolbarContainer': {
+                  display:`${!matches_800 ? 'none' : undefined}`
+               },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar `]: {
-                  width: "10px ",
+                  width: "5px ",
+                  height: '5px'
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar-track `]: {
                   background: `${colors.blueAccent[800]}`,
