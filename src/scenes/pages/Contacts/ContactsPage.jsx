@@ -1,16 +1,17 @@
 import React, {useMemo} from 'react';
-import {Box, LinearProgress, useMediaQuery, useTheme} from "@mui/material";
+import {Box, useMediaQuery, useTheme} from "@mui/material";
 import Header from "../../../components/Header";
 import {tokens} from "../../../theme";
 import {DataGrid, GridToolbar} from "@mui/x-data-grid";
 import {mockDataContacts} from "../../../data/mockData";
+import Loading from "../../../components/Loading";
 
 
 const ContactsPage = () => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
-   const matches = useMediaQuery('(min-width:600px)');
-   const matches_800 = useMediaQuery('(min-width:800px)');
+   const isNonMobil = useMediaQuery('(min-width:600px)');
+   const isNonMobil_800 = useMediaQuery('(min-width:800px)');
 
    const columns = useMemo(() => [
       {field: 'id', headerName: 'ID',flex: 0.5},
@@ -24,7 +25,7 @@ const ContactsPage = () => {
       {field: 'zipCode', headerName: 'Zip Code', flex: 0.5,minWidth: 65}
    ], [])
    return (
-      <Box m={matches ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
+      <Box m={isNonMobil ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='CONTACTS' subtitle='List of Contacts for Future Reference'/>
          <Box
             height='75vh'
@@ -52,7 +53,7 @@ const ContactsPage = () => {
                   color: `${colors.grey[100]} !important`
                },
                '& .MuiDataGrid-toolbarContainer': {
-                  display:`${!matches_800 ? 'none' : undefined}`
+                  display:`${!isNonMobil_800 ? 'none' : undefined}`
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar `]: {
                   width: "5px ",

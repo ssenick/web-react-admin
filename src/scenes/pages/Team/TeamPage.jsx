@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo} from 'react';
+import React, { useMemo} from 'react';
 import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Header from "../../../components/Header";
 import {tokens} from "../../../theme";
@@ -11,7 +11,7 @@ import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 const TeamPage = () => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
-   const matches = useMediaQuery('(min-width:600px)');
+   const isNonMobil = useMediaQuery('(min-width:600px)');
    const columns = useMemo(()=>[
       {field: 'id', headerName: 'ID'},
       {field: 'name', headerName: 'Name', flex: 1, cellClassName: 'name-column--cell',minWidth: 145},
@@ -41,7 +41,7 @@ const TeamPage = () => {
    ],[])
 
    return (
-      <Box m={matches ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
+      <Box m={isNonMobil ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='TEAM' subtitle='Managing the Team Members'/>
          <Box
             // flex= ' 1 1 auto'

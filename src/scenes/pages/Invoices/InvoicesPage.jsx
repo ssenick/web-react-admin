@@ -9,7 +9,7 @@ import {mockDataInvoices} from "../../../data/mockData";
 const Invoices = () => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
-   const matches = useMediaQuery('(min-width:600px)');
+   const isNonMobil = useMediaQuery('(min-width:600px)');
    const columns = useMemo(()=>[
       {field: 'id', headerName: 'ID'},
       {field: 'name', headerName: 'Name', flex: 1,minWidth: 140, cellClassName: 'name-column--cell'},
@@ -23,7 +23,7 @@ const Invoices = () => {
       {field: 'date', headerName: 'Date', flex: 1, minWidth: 90,},
    ],[])
    return (
-      <Box m={matches ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
+      <Box m={isNonMobil ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='INVOICES' subtitle='List of Invoice Balances'/>
          <Box
             height='75vh '

@@ -99,7 +99,7 @@ const MySidebar = () => {
                   }}>
                   {!isCollapsed &&
                      <Box display={'flex'} justifyContent={"space-between"} alignItems={"center"} ml='15px'>
-                        <Typography variant='h4'  color={colors.grey[100]}>ADMINS</Typography>
+                        <Typography variant='h4' pt='2px'  color={colors.grey[100]}>ADMINS</Typography>
                         <IconButton>
                            <MenuOpenOutlinedIcon/>
                         </IconButton>
