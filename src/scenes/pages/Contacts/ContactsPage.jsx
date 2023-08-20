@@ -11,22 +11,22 @@ const ContactsPage = () => {
    const colors = tokens(theme.palette.mode)
    const matches = useMediaQuery('(min-width:600px)');
    const columns = useMemo(() => [
-      {field: 'id', headerName: 'ID'},
+      {field: 'id', headerName: 'ID',flex: 0.5},
       {field: 'registrarId', headerName: 'Registrar Id'},
-      {field: 'name', headerName: 'Name', flex: 1, cellClassName: 'name-column--cell'},
-      {field: 'age', headerName: 'Age', type: "number", headerAlign: 'left', align: 'left'},
-      {field: 'phone', headerName: 'Phone Number', flex: 1},
-      {field: 'email', headerName: 'Email', flex: 1},
-      {field: 'address', headerName: 'Address', flex: 1},
-      {field: 'city', headerName: 'City', flex: 1},
-      {field: 'zipCode', headerName: 'Zip Code', flex: 1}
+      {field: 'name', headerName: 'Name', flex: 0.7, cellClassName: 'name-column--cell',minWidth: 140},
+      {field: 'age', headerName: 'Age', type: "number", headerAlign: 'left', align: 'left',flex: 0.3,minWidth: 55},
+      {field: 'phone', headerName: 'Phone Number', flex: 1,minWidth: 105},
+      {field: 'email', headerName: 'Email', flex: 1,minWidth: 185},
+      {field: 'address', headerName: 'Address', flex: 1,minWidth: 190},
+      {field: 'city', headerName: 'City', flex: 0.6,minWidth: 85},
+      {field: 'zipCode', headerName: 'Zip Code', flex: 0.5,minWidth: 65}
    ], [])
    return (
       <Box m={matches ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='CONTACTS' subtitle='List of Contacts for Future Reference'/>
          <Box
-            // height='75vh'
-            flex=' 1 1 auto'
+            height='75vh'
+            // flex=' 1 1 auto'
             sx={{
                '& .MuiDataGrid-root': {
                   border: 'none !important'

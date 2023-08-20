@@ -26,7 +26,7 @@ const Invoices = () => {
       <Box m={matches ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='INVOICES' subtitle='List of Invoice Balances'/>
          <Box
-            flex= ' 1 1 auto'
+            height='75vh '
             sx={{
                '& .MuiDataGrid-root': {
                   border: 'none !important',

@@ -27,7 +27,7 @@ const MySidebar = () => {
    const [isCollapsed, setIsCollapsed] = useState(false);
    const [selected, setSelected] = useState('/');
    const location = useLocation()
-
+   console.log(isCollapsed)
    const getAndSetSelected = () => {
       if (location.pathname === '/') return
       setSelected(location.pathname)
@@ -52,7 +52,7 @@ const MySidebar = () => {
             rootStyles={{
                [`&.ps-sidebar-root`]: {
                   border: 'none',
-                  height: '100%',
+                  height:'100%',
                   minWidth: '0'
                },
                [`.MuiBox-root`]: {
@@ -60,7 +60,8 @@ const MySidebar = () => {
                },
                [`.ps-sidebar-container`]: {
                   backgroundColor: `${colors.primary[400]}`,
-                  minHeight: '100%',
+                 minHeight: '100%',
+                 //  height:'100%',
                },
                [`.ps-sidebar-container::-webkit-scrollbar `]: {
                   width: "5px ",
@@ -91,13 +92,13 @@ const MySidebar = () => {
                   icon={isCollapsed ? <MenuOutlinedIcon/> : undefined}
                   style={{
                      margin: '10px 0 20px 0',
-                     color: colors.grey[100],
-                     opacity: `${!matches ? '0' : undefined}`,
-                     pointerEvents:`${!matches ? 'none' : undefined}`,
+                     color: `${colors.grey[100]}`,
+                     opacity: `${!matches ? '0' : '1'}`,
+                     pointerEvents:`${!matches ? 'none' : 'auto'}`,
                   }}>
                   {!isCollapsed &&
                      <Box display={'flex'} justifyContent={"space-between"} alignItems={"center"} ml='15px'>
-                        <Typography variant='h4' color={colors.grey[100]}>ADMINS</Typography>
+                        <Typography variant='h4'  color={colors.grey[100]}>ADMINS</Typography>
                         <IconButton>
                            <MenuOpenOutlinedIcon/>
                         </IconButton>

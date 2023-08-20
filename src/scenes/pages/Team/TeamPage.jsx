@@ -14,12 +14,12 @@ const TeamPage = () => {
    const matches = useMediaQuery('(min-width:600px)');
    const columns = useMemo(()=>[
       {field: 'id', headerName: 'ID'},
-      {field: 'name', headerName: 'Name', flex: 1, cellClassName: 'name-column--cell'},
-      {field: 'age', headerName: 'Age', type: "number", headerAlign: 'left', align: 'left'},
-      {field: 'phone', headerName: 'Phone Number', flex: 1},
-      {field: 'email', headerName: 'Email', flex: 1},
+      {field: 'name', headerName: 'Name', flex: 1, cellClassName: 'name-column--cell',minWidth: 145},
+      {field: 'age', headerName: 'Age', type: "number", headerAlign: 'left', align: 'left',minWidth: 80},
+      {field: 'phone', headerName: 'Phone Number', flex: 1,minWidth: 105},
+      {field: 'email', headerName: 'Email', flex: 1,minWidth: 175},
       {
-         field: 'access', headerName: 'Access Level', flex: 1, renderCell: ({row: {access}}) => {
+         field: 'access', headerName: 'Access Level', flex: 1,minWidth: 165, renderCell: ({row: {access}}) => {
             return (
                <Box
                   width='70%'
@@ -44,8 +44,8 @@ const TeamPage = () => {
       <Box m={matches ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='TEAM' subtitle='Managing the Team Members'/>
          <Box
-            flex= ' 1 1 auto'
-            // height='75vh'
+            // flex= ' 1 1 auto'
+            height='75vh'
             sx={{
                '& .MuiDataGrid-root': {
                   border: 'none !important'
