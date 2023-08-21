@@ -1,18 +1,26 @@
-import React, {useMemo} from 'react';
-import {Box, useMediaQuery, useTheme} from "@mui/material";
+import React, {useEffect, useMemo, useState} from 'react';
+import {Alert, Box, useMediaQuery, useTheme} from "@mui/material";
 import Header from "../../../components/Header";
 import {tokens} from "../../../theme";
 import {DataGrid, GridToolbar} from "@mui/x-data-grid";
-import {mockDataContacts} from "../../../data/mockData";
 import Loading from "../../../components/Loading";
+import {useFetching} from "../../../hooks/useFetching";
+import PostService from "../../../API/postService";
 
 
 const ContactsPage = () => {
+   const [mockDataContacts,setMockDataContacts] = useState([]);
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
    const isNonMobil = useMediaQuery('(min-width:600px)');
    const isNonMobil_800 = useMediaQuery('(min-width:800px)');
-
+   const [fetchContacts, isLoading, error] = useFetching( async ()=>{
+      const {data} = await PostService.getContacts();
+      setMockDataContacts(data)
+   })
+   useEffect(()=>{
+      fetchContacts()
+   },[])
    const columns = useMemo(() => [
       {field: 'id', headerName: 'ID',flex: 0.5},
       {field: 'registrarId', headerName: 'Registrar Id'},
@@ -68,7 +76,9 @@ const ContactsPage = () => {
 
             }}
          >
-            <DataGrid columns={columns} rows={mockDataContacts} slots={{toolbar: GridToolbar}}/>
+            {mockDataContacts.length > 0 && <DataGrid columns={columns} rows={mockDataContacts} slots={{toolbar: GridToolbar}}/>}
+            {isLoading && <Loading/>}
+            {error &&  <Alert severity="error">{error}</Alert>}
          </Box>
       </Box>
    );

@@ -1,15 +1,25 @@
-import React, {useMemo} from 'react';
-import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
+import React, {useEffect, useMemo, useState} from 'react';
+import {Alert, Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Header from "../../../components/Header";
 import {tokens} from "../../../theme";
 import {DataGrid} from "@mui/x-data-grid";
-import {mockDataInvoices} from "../../../data/mockData";
+import {useFetching} from "../../../hooks/useFetching";
+import PostService from "../../../API/postService";
+import Loading from "../../../components/Loading";
 
 
 const Invoices = () => {
+   const [mockDataInvoices,setMockDataInvoices] = useState([]);
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
    const isNonMobil = useMediaQuery('(min-width:600px)');
+   const [fetchInvoices, isLoading, error] = useFetching( async ()=>{
+      const {data} = await PostService.getInvoices();
+      setMockDataInvoices(data)
+   })
+   useEffect(()=>{
+      fetchInvoices()
+   },[])
    const columns = useMemo(()=>[
       {field: 'id', headerName: 'ID'},
       {field: 'name', headerName: 'Name', flex: 1,minWidth: 140, cellClassName: 'name-column--cell'},
@@ -65,7 +75,9 @@ const Invoices = () => {
 
             }}
          >
-            <DataGrid checkboxSelection columns={columns} rows={mockDataInvoices} />
+            {mockDataInvoices.length > 0 && <DataGrid checkboxSelection columns={columns} rows={mockDataInvoices} />}
+            {isLoading && <Loading/>}
+            {error &&  <Alert severity="error">{error}</Alert>}
          </Box>
       </Box>
    );

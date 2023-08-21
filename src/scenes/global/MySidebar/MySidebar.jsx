@@ -27,7 +27,6 @@ const MySidebar = () => {
    const [isCollapsed, setIsCollapsed] = useState(false);
    const [selected, setSelected] = useState('/');
    const location = useLocation()
-   console.log(isCollapsed)
    const getAndSetSelected = () => {
       if (location.pathname === '/') return
       setSelected(location.pathname)
@@ -91,7 +90,7 @@ const MySidebar = () => {
                <MenuItem
                   onClick={() => setIsCollapsed(!isCollapsed)}
                   icon={isCollapsed ? <MenuOutlinedIcon/> : undefined}
-                  style={{
+                  sx={{
                      margin: '10px 0 20px 0',
                      color: `${colors.grey[100]}`,
                      opacity: `${!matches ? '0' : '1'}`,

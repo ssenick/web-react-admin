@@ -129,8 +129,12 @@ const FormPage = () => {
                      ></TextField>
                   </Box>
                   <Box display={"flex"} justifyContent={"flex-end"} alignItems={'center'} pt='20px'>
-                     <Button type='submit' color='secondary' variant={"contained"} sx={{
+                     <Button type='submit'  variant={"contained"} sx={{
                         fontSize: '16px',
+                        backgroundColor: `${colors.greenAccent[600]}`,
+                        ":hover": {
+                           backgroundColor: `${colors.greenAccent[700]}`
+                        }
                      }}>
                         Create New User
                      </Button>

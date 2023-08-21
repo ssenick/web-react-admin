@@ -1,17 +1,27 @@
-import React, { useMemo} from 'react';
-import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
-import Header from "../../../components/Header";
-import {tokens} from "../../../theme";
-import {DataGrid} from "@mui/x-data-grid";
-import {mockDataTeam} from "../../../data/mockData";
+import React, {useEffect, useMemo, useState} from 'react';
+import {Alert, Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
 import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
 import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
+import {DataGrid} from "@mui/x-data-grid";
+import Header from "../../../components/Header";
+import {tokens} from "../../../theme";
+import {useFetching} from "../../../hooks/useFetching";
+import PostService from "../../../API/postService";
+import Loading from "../../../components/Loading";
 
 const TeamPage = () => {
+   const [mockDataTeam,setMockDataTeam] = useState([]);
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
    const isNonMobil = useMediaQuery('(min-width:600px)');
+   const [fetchTeam, isLoading, error] = useFetching( async ()=>{
+      const {data} = await PostService.getTeam();
+      setMockDataTeam(data)
+   })
+   useEffect(()=>{
+      fetchTeam()
+   },[])
    const columns = useMemo(()=>[
       {field: 'id', headerName: 'ID'},
       {field: 'name', headerName: 'Name', flex: 1, cellClassName: 'name-column--cell',minWidth: 145},
@@ -77,7 +87,9 @@ const TeamPage = () => {
                },
             }}
          >
-            <DataGrid columns={columns} rows={mockDataTeam}/>
+            {mockDataTeam.length > 0 && <DataGrid columns={columns} rows={mockDataTeam}/>}
+            {isLoading && <Loading/>}
+            {error &&  <Alert severity="error">{error}</Alert>}
          </Box>
       </Box>
    );
