@@ -5,7 +5,7 @@ const API_SERVER = 'https://64e2a6cfab003735881914ce.mockapi.io/';
 export default class PostService {
    static async getTeam() {
       const response = await axios.get(`${API_SERVER}mockDataTeam`);
-      return response
+      return response.data
    }
    static async getContacts() {
       const response = await axios.get(`${API_SERVER}mockDataContacts`);

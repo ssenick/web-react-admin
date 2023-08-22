@@ -16,7 +16,7 @@ const TeamPage = () => {
    const colors = tokens(theme.palette.mode)
    const isNonMobil = useMediaQuery('(min-width:600px)');
    const [fetchTeam, isLoading, error] = useFetching( async ()=>{
-      const {data} = await PostService.getTeam();
+      const data = await PostService.getTeam();
       setMockDataTeam(data)
    })
    useEffect(()=>{

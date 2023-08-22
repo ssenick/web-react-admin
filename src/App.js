@@ -10,6 +10,7 @@ import {Team} from "./scenes/pages/Team";
 import {Contacts} from "./scenes/pages/Contacts";
 import {Invoices} from "./scenes/pages/Invoices";
 import {Form} from "./scenes/pages/Form";
+import {Calendar} from "./scenes/pages/Calendar";
 
 
 
@@ -32,12 +33,12 @@ function App() {
                            <Route path='contacts' element={<Contacts/>} />
                            <Route path='invoices' element={<Invoices/>} />
                            <Route path='form' element={<Form/>} />
+                           <Route path='calendar' element={<Calendar/>} />
                            {/*<Route path='bar' element={<Bar/>} />*/}
                            {/*<Route path='line' element={<Line/>} />*/}
                            {/*<Route path='pie' element={<Pie/>} />*/}
                            {/*<Route path='faq' element={<FAQ/>} />*/}
                            {/*<Route path='geography' element={<Geography/>} />*/}
-                           {/*<Route path='calendar' element={<Calendar/>} />*/}
                            <Route path='*' element={<Dashboard/>}/>
                         </Routes>
                      </Suspense>

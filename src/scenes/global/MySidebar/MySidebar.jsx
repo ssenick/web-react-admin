@@ -24,6 +24,7 @@ const MySidebar = () => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
    const matches = useMediaQuery('(min-width:600px)');
+   console.log(matches)
    const [isCollapsed, setIsCollapsed] = useState(false);
    const [selected, setSelected] = useState('/');
    const location = useLocation()
@@ -90,8 +91,8 @@ const MySidebar = () => {
                <MenuItem
                   onClick={() => setIsCollapsed(!isCollapsed)}
                   icon={isCollapsed ? <MenuOutlinedIcon/> : undefined}
-                  sx={{
-                     margin: '10px 0 20px 0',
+                  style={{
+                     margin:`${!matches ? '10px 0 10px 0 ' : '10px 0 20px 0 '}`,
                      color: `${colors.grey[100]}`,
                      opacity: `${!matches ? '0' : '1'}`,
                      pointerEvents:`${!matches ? 'none' : 'auto'}`,
