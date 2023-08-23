@@ -13,6 +13,7 @@ import {Form} from "./scenes/pages/Form";
 import {Calendar} from "./scenes/pages/Calendar";
 import {Faq} from "./scenes/pages/Faq";
 import {Bar} from "./scenes/pages/Bar";
+import {Pie} from "./scenes/pages/Pie";
 
 
 
@@ -38,8 +39,8 @@ function App() {
                            <Route path='calendar' element={<Calendar/>} />
                            <Route path='faq' element={<Faq/>} />
                            <Route path='bar' element={<Bar/>} />
+                           <Route path='pie' element={<Pie/>} />
                            {/*<Route path='line' element={<Line/>} />*/}
-                           {/*<Route path='pie' element={<Pie/>} />*/}
                            {/*<Route path='geography' element={<Geography/>} />*/}
                            <Route path='*' element={<Dashboard/>}/>
                         </Routes>

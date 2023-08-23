@@ -19,4 +19,12 @@ export default class PostService {
       const response = await axios.get(`${API_SERVER}mockBarData`);
       return response
    }
+   static async getPie() {
+      const response = await axios.get(`${API_SERVER}mockPieData`);
+      return response
+   }
+   static async getLine() {
+      const response = await axios.get(`${API_SERVER}mockLineData`);
+      return response
+   }
 }
