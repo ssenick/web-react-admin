@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Header from "../../../components/Header";
-import {Alert, Box, useMediaQuery, useTheme} from "@mui/material";
-import {tokens} from "../../../theme";
+import {Alert, Box, useMediaQuery} from "@mui/material";
 import BarChart from "../../../components/BarChart";
 import {useFetching} from "../../../hooks/useFetching";
 import PostService from "../../../API/postService";

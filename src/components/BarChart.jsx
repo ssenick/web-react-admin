@@ -130,7 +130,6 @@ const BarChart = ({data, isDashboard = false}) => {
                ]
             ]
          }}
-
          legends =  {isNonMobil && !isDashboard ? [
             {
                dataFrom: 'keys',
