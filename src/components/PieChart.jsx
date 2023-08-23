@@ -11,34 +11,39 @@ const PieChart = ({data, isDashboard = false}) => {
       <ResponsivePie
          data={data}
          theme={{
-               axis:{
-                  domain:{
-                     line: {
-                        stroke:colors.grey[100]
-                     }
-                  },
-                  legend:{
-                     text:{
-                        fill:colors.grey[100]
-                     }
-                  },
-                  ticks:{
-                     line:{
-                        stroke:colors.grey[100],
-                        strokeWidth: 1,
-                     },
-                     text:{
-                        fill:colors.grey[100]
-                     }
+            axis: {
+               domain: {
+                  line: {
+                     stroke: colors.grey[100]
                   }
                },
-            legends:{
-                  text:{
-                     fill:colors.grey[100]
+               legend: {
+                  text: {
+                     fill: colors.grey[100]
                   }
+               },
+               ticks: {
+                  line: {
+                     stroke: colors.grey[100],
+                     strokeWidth: 1,
+                  },
+                  text: {
+                     fill: colors.grey[100]
+                  }
+               }
+            },
+            legends: {
+               text: {
+                  fill: colors.grey[100]
+               }
             }
-      }}
-         margin={isNonMobil && !isDashboard ? {top: 20, right: 60, bottom: 80, left: 50} : {top: 20, right: 60, bottom: 30, left: 30}}
+         }}
+         margin={isNonMobil && !isDashboard ? {top: 20, right: 60, bottom: 80, left: 50} : {
+            top: 20,
+            right: 60,
+            bottom: 30,
+            left: 30
+         }}
          innerRadius={0.5}
          padAngle={0.7}
          cornerRadius={3}
@@ -54,7 +59,7 @@ const PieChart = ({data, isDashboard = false}) => {
             ]
          }}
          arcLinkLabelsSkipAngle={10}
-         arcLinkLabelsTextColor= {`${colors.grey[100]}`}
+         arcLinkLabelsTextColor={`${colors.grey[100]}`}
          arcLinkLabelsThickness={2}
          arcLinkLabelsColor={{from: 'color'}}
          arcLabelsSkipAngle={10}
@@ -156,7 +161,7 @@ const PieChart = ({data, isDashboard = false}) => {
                   {
                      on: 'hover',
                      style: {
-                        itemTextColor:colors.greenAccent[400]
+                        itemTextColor: colors.greenAccent[400]
                      }
                   }
                ]

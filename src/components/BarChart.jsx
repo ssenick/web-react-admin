@@ -1,6 +1,6 @@
 import React from 'react';
-import {ResponsiveBar} from '@nivo/bar'
 import {useMediaQuery, useTheme} from "@mui/material";
+import { ResponsiveBar } from '@nivo/bar'
 import {tokens} from "../theme";
 
 const BarChart = ({data, isDashboard = false}) => {
