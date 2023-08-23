@@ -24,7 +24,6 @@ const MySidebar = () => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
    const matches = useMediaQuery('(min-width:600px)');
-   console.log(matches)
    const [isCollapsed, setIsCollapsed] = useState(false);
    const [selected, setSelected] = useState('/');
    const location = useLocation()

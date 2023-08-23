@@ -10,8 +10,13 @@ export default class PostService {
    static async getContacts() {
       const response = await axios.get(`${API_SERVER}mockDataContacts`);
       return response
-   }   static async getInvoices() {
+   }
+   static async getInvoices() {
       const response = await axios.get(`${API_SERVER}mockDataInvoices`);
+      return response
+   }
+   static async getBar() {
+      const response = await axios.get(`${API_SERVER}mockBarData`);
       return response
    }
 }
