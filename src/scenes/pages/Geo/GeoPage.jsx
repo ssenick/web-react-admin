@@ -4,26 +4,24 @@ import {Alert, Box, useMediaQuery} from "@mui/material";
 import {useFetching} from "../../../hooks/useFetching";
 import PostService from "../../../API/postService";
 import Loading from "../../../components/Loading";
-import LineChart from "../../../components/LineChart";
+import GeoChart from "../../../components/GeoChart";
 
 
-const LinePage = () => {
-   const [mockLineData,setMockLineData] = useState(null);
+const GeoPage = () => {
+   const [mockGeoData,setMockGeoData] = useState(null);
    const isNonMobil = useMediaQuery('(min-width:600px)');
-   const [fetchLine, isLoading, error] = useFetching( async ()=>{
-      const {data} = await PostService.getLine();
-      setMockLineData(data)
+   const [fetchGeo, isLoading, error] = useFetching( async ()=>{
+      const {data} = await PostService.getGeo();
+      setMockGeoData(data)
    })
-
    useEffect(()=>{
-      fetchLine()
+      fetchGeo()
    },[])
-
    return (
       <Box m={isNonMobil ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
-         <Header title='LIEN CHART' subtitle='Simple Line Chart'/>
+         <Header title='GEO CHART' subtitle='Simple Geo Chart'/>
          <Box height='75vh'>
-            {mockLineData && <LineChart data={mockLineData} />}
+            {mockGeoData && <GeoChart data={mockGeoData} />}
             {isLoading && <Loading/>}
             {error &&  <Alert severity="error">{error}</Alert>}
          </Box>
@@ -31,4 +29,4 @@ const LinePage = () => {
    );
 };
 
-export default LinePage;
+export default GeoPage;

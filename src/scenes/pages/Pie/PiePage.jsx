@@ -19,7 +19,7 @@ const PiePage = () => {
    },[])
    return (
       <Box m={isNonMobil ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
-         <Header title='BAR CHART' subtitle='Simple Bar Chart'/>
+         <Header title='PIE CHART' subtitle='Simple Pie Chart'/>
          <Box height='75vh'>
             {mockPieData && <PieChart data={mockPieData} />}
             {isLoading && <Loading/>}

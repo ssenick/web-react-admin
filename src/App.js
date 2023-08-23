@@ -15,6 +15,7 @@ import {Faq} from "./scenes/pages/Faq";
 import {Bar} from "./scenes/pages/Bar";
 import {Pie} from "./scenes/pages/Pie";
 import {Line} from "./scenes/pages/Line";
+import {Geo} from "./scenes/pages/Geo";
 
 
 
@@ -42,7 +43,7 @@ function App() {
                            <Route path='bar' element={<Bar/>} />
                            <Route path='pie' element={<Pie/>} />
                            <Route path='line' element={<Line/>} />
-                           {/*<Route path='geography' element={<Geography/>} />*/}
+                           <Route path='geography' element={<Geo/>} />
                            <Route path='*' element={<Dashboard/>}/>
                         </Routes>
                      </Suspense>

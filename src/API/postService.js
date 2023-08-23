@@ -27,4 +27,8 @@ export default class PostService {
       const response = await axios.get(`${API_SERVER}mockLineData`);
       return response
    }
+   static async getGeo() {
+      const response = await axios.get(`${API_SERVER}mockGeographyData`);
+      return response
+   }
 }
