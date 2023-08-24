@@ -18,8 +18,6 @@ import {Line} from "./scenes/pages/Line";
 import {Geo} from "./scenes/pages/Geo";
 
 
-
-
 function App() {
    const [theme, colorMode] = useMode();
 

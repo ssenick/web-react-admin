@@ -1,4 +1,9 @@
 import { tokens } from "../theme";
+import EmailIcon from "@mui/icons-material/Email";
+import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import TrafficIcon from "@mui/icons-material/Traffic";
+import React from "react";
 
 export const mockDataTeam = [
    {
@@ -1281,3 +1286,4 @@ export const mockGeographyData = [
       value: 171135,
    },
 ];
+

@@ -18,8 +18,10 @@ const ContactsPage = () => {
       const {data} = await PostService.getContacts();
       setMockDataContacts(data)
    })
+
    useEffect(()=>{
       fetchContacts()
+
    },[])
    const columns = useMemo(() => [
       {field: 'id', headerName: 'ID',flex: 0.5},
