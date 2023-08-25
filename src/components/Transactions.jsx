@@ -8,7 +8,7 @@ const Transactions = ({gridColumn = 'span 4', gridRow='span 2'}) => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
    return (
-      <Box gridColumn={gridColumn} gridRow={gridRow} bgcolor={colors.primary[400]} overflow={"auto"}>
+      <Box gridColumn={gridColumn} gridRow={gridRow} borderRadius='5px' bgcolor={colors.primary[400]} overflow={"auto"}>
          <Box display={"flex"} justifyContent={"space-between"} alignItems={"center"}
               borderBottom={`4px solid ${colors.primary[500]}`} color={colors.grey[100]} p='15px'>
             <Typography color={colors.grey[100]} variant='h5' fontWeight='600'>

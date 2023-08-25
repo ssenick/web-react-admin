@@ -24,7 +24,7 @@ const GeoChart = ({data, isDashboard = false}) => {
          borderColor="#fffff"
 
 
-         legends={isDashboard || isNonMobil ? [
+         legends={ isDashboard || !isNonMobil ?  undefined : [
             {
                anchor: 'bottom-left',
                direction: 'column',
@@ -48,7 +48,7 @@ const GeoChart = ({data, isDashboard = false}) => {
                   }
                ]
             }
-         ] : undefined}
+         ] }
       />
    );
 };
