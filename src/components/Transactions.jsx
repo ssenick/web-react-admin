@@ -22,10 +22,10 @@ const Transactions = ({gridColumn = 'span 4', gridRow='span 2'}) => {
                borderBottom={`4px solid ${colors.primary[500]}`} p='15px'>
                <Box>
                   <Typography color={colors.greenAccent[500]} variant='h5' fontWeight='600'>
-                     {item.txId}
+                     {item.user}
                   </Typography>
                   <Typography color={colors.grey[100]} >
-                     {item.user}
+                     {item.txId}
                   </Typography>
                </Box>
                <Box color={colors.grey[100]}>

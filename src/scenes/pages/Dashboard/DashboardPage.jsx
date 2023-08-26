@@ -16,7 +16,6 @@ const DashboardPage = () => {
    const isNonPc = useMediaQuery('(min-width:1250px)');
    const isNonTablet = useMediaQuery('(min-width:950px)');
    const isNonMobile = useMediaQuery('(min-width:600px)');
-   console.log(isNonPc)
    const screenTabletCheck = useCallback(() => {
       if(isNonPc){
          return 'span 8'

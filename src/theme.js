@@ -197,9 +197,11 @@ export const themeSettings = (mode) => {
 export const ColorModeContext = createContext({
    toggleColorMode: () => {},
 });
+const LOCAL_STORAGE_THEME_KEY = 'theme'
+const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) || "dark";
 
 export const useMode = () => {
-   const [mode, setMode] = useState("dark");
+   const [mode, setMode] = useState(defaultTheme);
 
    const colorMode = useMemo(
       () => ({
@@ -208,6 +210,9 @@ export const useMode = () => {
       }),
       []
    );
+   const setLocalStorage = useMemo(() => {
+      localStorage.setItem(LOCAL_STORAGE_THEME_KEY, mode)
+   },[mode])
 
    const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
    return [theme, colorMode];

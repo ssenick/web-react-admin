@@ -6,12 +6,10 @@ body,
 .app,
 .content{
     height: 100vh;
-    /*height: 100%;*/
     width: 100%;
     font-family: 'Source Sans 3', sans-serif;
     overflow: hidden;
 }
-
 
 .app {
     display: flex;
@@ -24,9 +22,6 @@ body,
     min-width: 0;
     overflow: auto;
     position: relative;
-    /*display: flex;*/
-    /*flex-direction: column;*/
-
 }
 
 .content::-webkit-scrollbar {
@@ -40,22 +35,3 @@ body,
 .content::-webkit-scrollbar-thumb {
     background: #535ac8;
 }
-/*.content > :last-child{*/
-/*      flex: 1 1 auto;*/
-/*}*/
-
-/*::-webkit-scrollbar {*/
-/*    width: 10px;*/
-/*}*/
-
-/*::-webkit-scrollbar-track {*/
-/*    background: #e0e0e0;*/
-/*}*/
-
-/*::-webkit-scrollbar-thumb {*/
-/*    background: #888;*/
-/*}*/
-
-/*::-webkit-scrollbar-track:hover {*/
-/*    background: #555;*/
-/*}*/
