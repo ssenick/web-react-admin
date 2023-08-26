@@ -1,12 +1,9 @@
-import { Typography, useTheme} from "@mui/material";
-import {tokens} from "../../../theme";
-import {MenuItem} from "react-pro-sidebar";
+import React, {memo} from "react";
 import {Link} from "react-router-dom";
-import React from "react";
+import {MenuItem} from "react-pro-sidebar";
+import {Typography} from "@mui/material";
 
- const ItemMenu = ({title, to, icon, selected, setSelected}) => {
-   const theme = useTheme()
-   const colors = tokens(theme.palette.mode)
+const ItemMenu = memo(({title, to, icon, selected, setSelected}) => {
    return (
       <MenuItem
          component={ <Link to={to}/>}
@@ -16,5 +13,5 @@ import React from "react";
          <Typography>{title}</Typography>
       </MenuItem>
    )
-}
+})
 export default ItemMenu

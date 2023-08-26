@@ -1,11 +1,10 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {Alert, Box, useMediaQuery, useTheme} from "@mui/material";
-import Header from "../../../components/Header";
-import {tokens} from "../../../theme";
 import {DataGrid, GridToolbar} from "@mui/x-data-grid";
-import Loading from "../../../components/Loading";
-import {useFetching} from "../../../hooks/useFetching";
 import PostService from "../../../API/postService";
+import {tokens} from "../../../theme";
+import {useFetching} from "../../../hooks/useFetching";
+import {Header,Loading} from "../../../components";
 
 
 const ContactsPage = () => {
@@ -21,8 +20,8 @@ const ContactsPage = () => {
 
    useEffect(()=>{
       fetchContacts()
-
    },[])
+
    const columns = useMemo(() => [
       {field: 'id', headerName: 'ID',flex: 0.5},
       {field: 'registrarId', headerName: 'Registrar Id'},
@@ -34,12 +33,13 @@ const ContactsPage = () => {
       {field: 'city', headerName: 'City', flex: 0.6,minWidth: 85},
       {field: 'zipCode', headerName: 'Zip Code', flex: 0.5,minWidth: 65}
    ], [])
+
+
    return (
       <Box m={isNonMobil ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='CONTACTS' subtitle='List of Contacts for Future Reference'/>
          <Box
             height='75vh'
-            // flex=' 1 1 auto'
             sx={{
                '& .MuiDataGrid-root': {
                   border: 'none !important'
@@ -70,10 +70,10 @@ const ContactsPage = () => {
                   height: '5px'
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar-track `]: {
-                  background: `${colors.blueAccent[800]}`,
+                  background: `transparent`,
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb `]: {
-                  background: `${colors.blueAccent[600]}`,
+                  background: `${colors.blueAccent[700]}`,
                },
 
             }}

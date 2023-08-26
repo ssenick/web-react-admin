@@ -4,7 +4,7 @@ import { ResponsiveBar } from '@nivo/bar'
 import {tokens} from "../theme";
 
 const BarChart = ({data, isDashboard = false}) => {
-   const isNonMobil = useMediaQuery('(min-width:600px)');
+   const isNotMobile = useMediaQuery('(min-width:600px)');
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
    return (
@@ -51,7 +51,7 @@ const BarChart = ({data, isDashboard = false}) => {
          ]}
 
          indexBy="country"
-         margin={isNonMobil ? {top: 20, right: 120, bottom: 20, left: 50} : {top: 10, right: 10, bottom: 10, left: 10}}
+         margin={isNotMobile ? {top: 20, right: 120, bottom: 20, left: 50} : {top: 10, right: 10, bottom: 10, left: 10}}
          padding={0.3}
          valueScale={{type: 'linear'}}
          indexScale={{type: 'band', round: true}}
@@ -130,7 +130,7 @@ const BarChart = ({data, isDashboard = false}) => {
                ]
             ]
          }}
-         legends =  {isNonMobil && !isDashboard ? [
+         legends =  {isNotMobile && !isDashboard ? [
             {
                dataFrom: 'keys',
                anchor: 'bottom-right',

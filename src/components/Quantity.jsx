@@ -1,14 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Alert, Box, IconButton, Typography, useTheme} from "@mui/material";
-import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import LineChart from "./LineChart";
-import Loading from "./Loading";
+import {Alert, Box, Typography, useTheme} from "@mui/material";
 import {tokens} from "../theme";
 import {useFetching} from "../hooks/useFetching";
 import PostService from "../API/postService";
-import BarChart from "./BarChart";
+import {Loading,BarChart} from "./index";
 
-const Quantily = ({gridColumn = 'span 4', gridRow = 'span 2'}) => {
+const Quantity = ({gridColumn = 'span 4', gridRow = 'span 2'}) => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
    const [mockBarData, setMockBarData] = useState(null);
@@ -36,4 +33,4 @@ const Quantily = ({gridColumn = 'span 4', gridRow = 'span 2'}) => {
    );
 };
 
-export default Quantily;
+export default Quantity;

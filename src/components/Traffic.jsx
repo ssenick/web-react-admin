@@ -1,12 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Alert, Box, IconButton, Typography, useTheme} from "@mui/material";
-import DownloadOutlinedIcon from "@mui/icons-material/DownloadOutlined";
-import LineChart from "./LineChart";
-import Loading from "./Loading";
+import {Alert, Box, Typography, useTheme} from "@mui/material";
 import {tokens} from "../theme";
 import {useFetching} from "../hooks/useFetching";
 import PostService from "../API/postService";
-import GeoChart from "./GeoChart";
+import {Loading,GeoChart} from "./index";
 
 const Traffic = ({gridColumn = 'span 8', gridRow='span 2'}) => {
    const theme = useTheme()

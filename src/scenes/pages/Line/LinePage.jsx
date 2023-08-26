@@ -1,15 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import Header from "../../../components/Header";
 import {Alert, Box, useMediaQuery} from "@mui/material";
 import {useFetching} from "../../../hooks/useFetching";
 import PostService from "../../../API/postService";
-import Loading from "../../../components/Loading";
-import LineChart from "../../../components/LineChart";
+import {Loading,LineChart,Header} from "../../../components";
 
 
 const LinePage = () => {
    const [mockLineData,setMockLineData] = useState(null);
-   const isNonMobil = useMediaQuery('(min-width:600px)');
+   const isNotMobile = useMediaQuery('(min-width:600px)');
    const [fetchLine, isLoading, error] = useFetching( async ()=>{
       const {data} = await PostService.getLine();
       setMockLineData(data)
@@ -20,7 +18,7 @@ const LinePage = () => {
    },[])
 
    return (
-      <Box m={isNonMobil ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
+      <Box m={isNotMobile ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='LIEN CHART' subtitle='Simple Line Chart'/>
          <Box height='75vh'>
             {mockLineData && <LineChart data={mockLineData} />}

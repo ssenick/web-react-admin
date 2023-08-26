@@ -1,8 +1,8 @@
 import {Box, Typography, useTheme} from "@mui/material";
 import {tokens} from "../theme";
-import ProgressCircle from "./ProgressCircle";
+import {ProgressCircle} from "./index";
 
-const Campain = ({gridColumn = 'span 4', gridRow = 'span 2'}) => {
+const Campaign = ({gridColumn = 'span 4', gridRow = 'span 2'}) => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
 
@@ -25,4 +25,4 @@ const Campain = ({gridColumn = 'span 4', gridRow = 'span 2'}) => {
    );
 };
 
-export default Campain;
+export default Campaign;

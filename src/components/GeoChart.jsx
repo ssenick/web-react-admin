@@ -1,13 +1,10 @@
 import React from 'react';
 import {ResponsiveChoropleth} from '@nivo/geo'
-import {useMediaQuery, useTheme} from "@mui/material";
-import {tokens} from "../theme";
+import {useMediaQuery} from "@mui/material";
 import {geoFeatures} from "../data/mockGeoFeature";
 
 const GeoChart = ({data, isDashboard = false}) => {
-   const isNonMobil = useMediaQuery('(min-width:600px)');
-   const theme = useTheme()
-   const colors = tokens(theme.palette.mode)
+   const isNotMobile = useMediaQuery('(min-width:600px)');
    return (
       <ResponsiveChoropleth
          data={data}
@@ -19,12 +16,12 @@ const GeoChart = ({data, isDashboard = false}) => {
          valueFormat=".2s"
          projectionTranslation={[0.5, 0.5]}
          projectionRotation={[0, 0, 0]}
-         projectionScale={isDashboard || !isNonMobil ? 50 : 150}
+         projectionScale={isDashboard || !isNotMobile ? 50 : 150}
          borderWidth={1.5}
          borderColor="#fffff"
 
 
-         legends={ isDashboard || !isNonMobil ?  undefined : [
+         legends={ isDashboard || !isNotMobile ?  undefined : [
             {
                anchor: 'bottom-left',
                direction: 'column',

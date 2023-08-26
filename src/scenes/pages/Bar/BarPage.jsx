@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import Header from "../../../components/Header";
 import {Alert, Box, useMediaQuery} from "@mui/material";
-import BarChart from "../../../components/BarChart";
 import {useFetching} from "../../../hooks/useFetching";
 import PostService from "../../../API/postService";
-import Loading from "../../../components/Loading";
+import {Header,BarChart,Loading} from "../../../components";
+
 const BarPage = () => {
    const [mockBarData,setMockBarData] = useState(null);
    const isNonMobil = useMediaQuery('(min-width:600px)');

@@ -1,18 +1,17 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {Alert, Box, Typography, useMediaQuery, useTheme} from "@mui/material";
-import Header from "../../../components/Header";
-import {tokens} from "../../../theme";
 import {DataGrid} from "@mui/x-data-grid";
-import {useFetching} from "../../../hooks/useFetching";
 import PostService from "../../../API/postService";
-import Loading from "../../../components/Loading";
+import {useFetching} from "../../../hooks/useFetching";
+import {tokens} from "../../../theme";
+import {Header,Loading} from "../../../components";
 
 
 const Invoices = () => {
    const [mockDataInvoices,setMockDataInvoices] = useState([]);
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
-   const isNonMobil = useMediaQuery('(min-width:600px)');
+   const isNotMobile = useMediaQuery('(min-width:600px)');
    const [fetchInvoices, isLoading, error] = useFetching( async ()=>{
       const {data} = await PostService.getInvoices();
       setMockDataInvoices(data)
@@ -33,7 +32,7 @@ const Invoices = () => {
       {field: 'date', headerName: 'Date', flex: 1, minWidth: 90,},
    ],[])
    return (
-      <Box m={isNonMobil ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
+      <Box m={isNotMobile ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='INVOICES' subtitle='List of Invoice Balances'/>
          <Box
             height='75vh '
@@ -67,10 +66,10 @@ const Invoices = () => {
                   height: '5px'
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar-track `]: {
-                  background:`${colors.blueAccent[800]}`,
+                  background:`transparent`,
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb `]: {
-                  background:`${colors.blueAccent[600]}`,
+                  background:`${colors.blueAccent[800]}`,
                },
 
             }}

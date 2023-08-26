@@ -3,9 +3,9 @@ import {Box, Typography, useMediaQuery, useTheme} from "@mui/material";
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
-import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 import {tokens} from "../../../theme";
-import Header from "../../../components/Header";
+import {Header} from "../../../components";
+import ExpandMoreOutlinedIcon from '@mui/icons-material/ExpandMoreOutlined';
 
 const faqContent = [
    {
@@ -31,14 +31,14 @@ const faqContent = [
 ]
 
 const Faq = () => {
-   const isNonMobil = useMediaQuery('(min-width:680px)');
+   const isNotMobile = useMediaQuery('(min-width:680px)');
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
 
 
 
    return (
-      <Box m={isNonMobil ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
+      <Box m={isNotMobile ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='FAQ' subtitle='Frequently asked questions'/>
          <Box>
             {faqContent && faqContent.map((item,index)=>
@@ -46,7 +46,7 @@ const Faq = () => {
                sx={{
                   '& .MuiAccordionSummary-content': {
                      gap: '15px',
-                     flexDirection: `${isNonMobil ? undefined : 'column'}`
+                     flexDirection: `${isNotMobile ? undefined : 'column'}`
                   }
                }}
                >

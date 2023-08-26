@@ -16,7 +16,6 @@ body,
     position: relative;
 }
 
-
 .content{
     flex: 1 1 auto;
     min-width: 0;
@@ -29,9 +28,9 @@ body,
 }
 
 .content::-webkit-scrollbar-track {
-    background: #2a2d64;
+    background: transparent;
 }
 
 .content::-webkit-scrollbar-thumb {
-    background: #535ac8;
+    background: #2a2d64;
 }

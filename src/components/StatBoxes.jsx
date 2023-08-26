@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, useTheme} from "@mui/material";
 import {tokens} from "../theme";
-import StatBox from "./StatBox";
+import {StatBox} from "./index";
 import EmailIcon from "@mui/icons-material/Email";
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";

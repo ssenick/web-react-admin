@@ -5,7 +5,6 @@ import {tokens} from "../theme";
 
 const LineChart = ({data, isDashboard = false}) => {
    const isNonMobil = useMediaQuery('(min-width:600px)');
-   const isNonTablet = useMediaQuery('(min-width:900px)');
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
 

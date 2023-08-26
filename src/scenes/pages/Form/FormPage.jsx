@@ -2,8 +2,8 @@ import React from 'react';
 import {Formik} from "formik";
 import * as yup from "yup";
 import {Box, Button, TextField, useMediaQuery, useTheme} from "@mui/material";
-import Header from "../../../components/Header";
 import {tokens} from "../../../theme";
+import {Header} from "../../../components";
 
 const initialValues = {
    firstName: '',
@@ -25,7 +25,7 @@ const userSchema = yup.object().shape({
 })
 
 const FormPage = () => {
-   const isNonMobil = useMediaQuery('(min-width:600px)');
+   const isNotMobile = useMediaQuery('(min-width:600px)');
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
    const handleFormSubmit = (values) => {
@@ -33,7 +33,7 @@ const FormPage = () => {
    }
 
    return (
-      <Box m={isNonMobil ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
+      <Box m={isNotMobile ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='CREAT USER' subtitle='Create a New User Profile'/>
          <Formik
             onSubmit={handleFormSubmit}
@@ -44,9 +44,9 @@ const FormPage = () => {
                <form onSubmit={handleSubmit}>
                   <Box display={"grid"} gap="30px" gridTemplateColumns='repeat(4,minmax(0,1fr))'
                        sx={{
-                          "& > div": {gridColumn: isNonMobil ? undefined : 'span 4'},
-                          "& .MuiFilledInput-root" : {
-                            backgroundColor: `${colors.primary[400]}`
+                          "& > div": {gridColumn: isNotMobile ? undefined : 'span 4'},
+                          "& .MuiFilledInput-root": {
+                             backgroundColor: `${colors.primary[400]}`
                           }
                        }}>
                      <TextField
@@ -129,7 +129,7 @@ const FormPage = () => {
                      ></TextField>
                   </Box>
                   <Box display={"flex"} justifyContent={"flex-end"} alignItems={'center'} pt='20px'>
-                     <Button type='submit'  variant={"contained"} sx={{
+                     <Button type='submit' variant={"contained"} sx={{
                         fontSize: '16px',
                         backgroundColor: `${colors.greenAccent[600]}`,
                         ":hover": {
@@ -140,10 +140,10 @@ const FormPage = () => {
                      </Button>
                   </Box>
                </form>
-               )}
-               </Formik>
-               </Box>
-               );
-            };
+            )}
+         </Formik>
+      </Box>
+   );
+};
 
-            export default FormPage;
+export default FormPage;

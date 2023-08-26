@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {useLocation} from "react-router-dom";
 import {Sidebar, Menu, MenuItem} from 'react-pro-sidebar';
 import {Box, IconButton, Typography, useMediaQuery, useTheme} from "@mui/material";
-
 import {tokens} from "../../../theme";
 import {userImage} from "../../../assets";
-import ItemMenu from "./ItemMenu";
+import {ItemMenu} from "../index";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlineOutlinedIcon from "@mui/icons-material/PeopleOutlineOutlined";
 import ContactsOutlinedIcon from '@mui/icons-material/ContactsOutlined';
@@ -23,27 +22,28 @@ import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
 const MySidebar = () => {
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
-   const matches = useMediaQuery('(min-width:600px)');
+   const isNotMobile = useMediaQuery('(min-width:600px)');
    const [isCollapsed, setIsCollapsed] = useState(false);
    const [selected, setSelected] = useState('/');
    const location = useLocation()
-   const getAndSetSelected = () => {
+
+   const getAndSetSelected = useCallback(() => {
       if (location.pathname === '/') return
       setSelected(location.pathname)
-   }
+   },[location.pathname])
 
-   const checkMobileStatus = () => {
-      if (!matches) setIsCollapsed(true)
-      if (matches) setIsCollapsed(false)
-   }
+   const checkMobileStatus = useCallback(()=> {
+      if (!isNotMobile) setIsCollapsed(true)
+      if (isNotMobile) setIsCollapsed(false)
+   },[isNotMobile])
 
    useEffect(() => {
       checkMobileStatus()
-   }, [matches])
+   }, [isNotMobile,checkMobileStatus])
 
    useEffect(() => {
       getAndSetSelected()
-   }, [])
+   }, [getAndSetSelected])
    return (
       <Box>
          <Sidebar
@@ -51,29 +51,23 @@ const MySidebar = () => {
             rootStyles={{
                [`&.ps-sidebar-root`]: {
                   border: 'none',
-                  // height:'100%',
                   height:'100vh',
                   minWidth: '0'
-               },
-               [`.MuiBox-root`]: {
-                  // paddingLeft:'10px'
                },
                [`.ps-sidebar-container`]: {
                   backgroundColor: `${colors.primary[400]}`,
                  minHeight: '100%',
-                 //  height:'100%',
                },
                [`.ps-sidebar-container::-webkit-scrollbar `]: {
                   width: "5px ",
                },
                [`.ps-sidebar-container::-webkit-scrollbar-track `]: {
-                  background: `${colors.blueAccent[800]}`,
+                  background: `transparent`,
                },
                [`.ps-sidebar-container::-webkit-scrollbar-thumb `]: {
-                  background: `${colors.blueAccent[600]}`,
+                  background: `${colors.blueAccent[800]}`,
                },
                [`.ps-menu-button`]: {
-                  // padding: '0px 10px',
                   padding: "5px 20px 5px 20px !important",
                   color: `${colors.grey[100]} !important`,
                },
@@ -91,10 +85,10 @@ const MySidebar = () => {
                   onClick={() => setIsCollapsed(!isCollapsed)}
                   icon={isCollapsed ? <MenuOutlinedIcon/> : undefined}
                   style={{
-                     margin:`${!matches ? '10px 0 10px 0 ' : '10px 0 20px 0 '}`,
+                     margin:`${!isNotMobile ? '10px 0 10px 0 ' : '10px 0 20px 0 '}`,
                      color: `${colors.grey[100]}`,
-                     opacity: `${!matches ? '0' : '1'}`,
-                     pointerEvents:`${!matches ? 'none' : 'auto'}`,
+                     opacity: `${!isNotMobile ? '0' : '1'}`,
+                     pointerEvents:`${!isNotMobile ? 'none' : 'auto'}`,
                   }}>
                   {!isCollapsed &&
                      <Box display={'flex'} justifyContent={"space-between"} alignItems={"center"} ml='15px'>

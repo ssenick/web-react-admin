@@ -1,20 +1,19 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {Alert, Box, Typography, useMediaQuery, useTheme} from "@mui/material";
-import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
-import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
-import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 import {DataGrid} from "@mui/x-data-grid";
-import Header from "../../../components/Header";
 import {tokens} from "../../../theme";
 import {useFetching} from "../../../hooks/useFetching";
 import PostService from "../../../API/postService";
-import Loading from "../../../components/Loading";
+import {Loading,Header} from "../../../components";
+import AdminPanelSettingsOutlinedIcon from '@mui/icons-material/AdminPanelSettingsOutlined';
+import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
+import LockOpenOutlinedIcon from '@mui/icons-material/LockOpenOutlined';
 
 const TeamPage = () => {
    const [mockDataTeam,setMockDataTeam] = useState([]);
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
-   const isNonMobil = useMediaQuery('(min-width:600px)');
+   const isNotMobile = useMediaQuery('(min-width:600px)');
    const [fetchTeam, isLoading, error] = useFetching( async ()=>{
       const data = await PostService.getTeam();
       setMockDataTeam(data)
@@ -51,10 +50,9 @@ const TeamPage = () => {
    ],[])
 
    return (
-      <Box m={isNonMobil ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
+      <Box m={isNotMobile ? '20px' : '10px'} display={"flex"} flexDirection={"column"}>
          <Header title='TEAM' subtitle='Managing the Team Members'/>
          <Box
-            // flex= ' 1 1 auto'
             height='75vh'
             sx={{
                '& .MuiDataGrid-root': {
@@ -80,10 +78,10 @@ const TeamPage = () => {
                   height: '5px'
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar-track `]: {
-                  background:`${colors.blueAccent[800]}`,
+                  background:`transparent`,
                },
                [`.MuiDataGrid-virtualScroller::-webkit-scrollbar-thumb `]: {
-                  background:`${colors.blueAccent[600]}`,
+                  background:`${colors.blueAccent[700]}`,
                },
             }}
          >

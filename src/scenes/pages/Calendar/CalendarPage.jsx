@@ -1,13 +1,13 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Box, List, ListItem, ListItemText, Typography, useMediaQuery, useTheme} from "@mui/material";
-import {tokens} from "../../../theme";
-import Header from "../../../components/Header";
 import FullCalendar from "@fullcalendar/react";
+import {tokens} from "../../../theme";
+import {formatDate} from "@fullcalendar/core";
+import {Header} from "../../../components";
 import interactionPlugin from '@fullcalendar/interaction'
 import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import listPlugin from '@fullcalendar/list'
-import {formatDate} from "@fullcalendar/core";
 
 const CalendarPage = () => {
    const theme = useTheme()
@@ -33,9 +33,9 @@ const CalendarPage = () => {
 
       }
    }
-   const handleEventClick = (selected) => {
+   const handleEventClick = useCallback((selected) => {
       if (window.confirm("Delete the event ?")) selected.event.remove()
-   }
+   }, [])
 
 
    return (
@@ -54,10 +54,10 @@ const CalendarPage = () => {
                      width: '5px'
                   },
                   '&::-webkit-scrollbar-track': {
-                     background: `${colors.blueAccent[700]}`,
+                     background: `transparent`,
                   },
                   '&::-webkit-scrollbar-thumb': {
-                     background: `${colors.blueAccent[500]}`
+                     background: `${colors.blueAccent[700]}`
                   },
                } : {
                   height: '69vh',
@@ -68,10 +68,10 @@ const CalendarPage = () => {
                      width: '5px'
                   },
                   '&::-webkit-scrollbar-track': {
-                     background: `${colors.blueAccent[700]}`,
+                     background: `transparent`,
                   },
                   '&::-webkit-scrollbar-thumb': {
-                     background: `${colors.blueAccent[500]}`
+                     background: `${colors.blueAccent[700]}`
                   },
                }}>
                   {currentEvents && currentEvents.map((event) =>
@@ -105,7 +105,7 @@ const CalendarPage = () => {
                   flexWrap: 'wrap',
                   gap: '10px'
                }
-            }: undefined}>
+            } : undefined}>
                <FullCalendar
                   height={isNonSmallPc ? '75vh' : 'auto'}
                   plugins={[
