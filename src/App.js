@@ -1,10 +1,9 @@
 import React, {Suspense} from "react";
-import {Outlet, Route, Routes} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import {ColorModeContext, useMode} from "./theme";
 import {Loading} from './components'
 import {Bar, Calendar, Contacts, Dashboard, Faq, Form, Geo, Invoices, Line, Pie, Team} from './scenes/pages'
-import Layout from "./scenes/Layout/Layout";
 import {MySidebar, TopBar} from "./scenes/global";
 
 
