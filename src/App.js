@@ -1,10 +1,11 @@
 import React, {Suspense} from "react";
-import {Route, Routes} from "react-router-dom";
+import {Outlet, Route, Routes} from "react-router-dom";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import {ColorModeContext, useMode} from "./theme";
 import {Loading} from './components'
 import {Bar, Calendar, Contacts, Dashboard, Faq, Form, Geo, Invoices, Line, Pie, Team} from './scenes/pages'
 import Layout from "./scenes/Layout/Layout";
+import {MySidebar, TopBar} from "./scenes/global";
 
 
 function App() {
@@ -14,9 +15,11 @@ function App() {
          <ThemeProvider theme={theme}>
             <CssBaseline>
                <div className="app">
-                  <Suspense fallback={<Loading/>}>
-                     <Routes>
-                        <Route path='/' element={<Layout/>}>
+                  <MySidebar/>
+                  <main className="content">
+                     <TopBar/>
+                     <Suspense fallback={<Loading/>}>
+                        <Routes>
                            <Route index element={<Dashboard/>}/>
                            <Route path='team' element={<Team/>}/>
                            <Route path='contacts' element={<Contacts/>}/>
@@ -29,9 +32,10 @@ function App() {
                            <Route path='line' element={<Line/>}/>
                            <Route path='geography' element={<Geo/>}/>
                            <Route path='*' element={<Dashboard/>}/>
-                        </Route>
-                     </Routes>
-                  </Suspense>
+                        </Routes>
+                     </Suspense>
+                  </main>
+
                </div>
             </CssBaseline>
          </ThemeProvider>

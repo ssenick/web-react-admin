@@ -20,15 +20,17 @@ import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined';
 import MenuOpenOutlinedIcon from '@mui/icons-material/MenuOpenOutlined';
 
 const MySidebar = () => {
+
    const theme = useTheme()
    const colors = tokens(theme.palette.mode)
    const isNotMobile = useMediaQuery('(min-width:600px)');
    const [isCollapsed, setIsCollapsed] = useState(false);
    const [selected, setSelected] = useState('/');
    const location = useLocation()
+   const sidebarToggle = useCallback(() => setIsCollapsed(!isCollapsed),[isCollapsed])
 
    const getAndSetSelected = useCallback(() => {
-      if (location.pathname === '/') return
+      if (location.pathname === '/' || '') return
       setSelected(location.pathname)
    },[location.pathname])
 
@@ -51,12 +53,12 @@ const MySidebar = () => {
             rootStyles={{
                [`&.ps-sidebar-root`]: {
                   border: 'none',
-                  height:'100vh',
+                  height: '100vh',
                   minWidth: '0'
                },
                [`.ps-sidebar-container`]: {
                   backgroundColor: `${colors.primary[400]}`,
-                 minHeight: '100%',
+                  minHeight: '100%',
                },
                [`.ps-sidebar-container::-webkit-scrollbar `]: {
                   width: "5px ",
@@ -82,17 +84,17 @@ const MySidebar = () => {
          >
             <Menu iconShape="square">
                <MenuItem
-                  onClick={() => setIsCollapsed(!isCollapsed)}
+                  onClick={sidebarToggle}
                   icon={isCollapsed ? <MenuOutlinedIcon/> : undefined}
                   style={{
-                     margin:`${!isNotMobile ? '10px 0 10px 0 ' : '10px 0 20px 0 '}`,
+                     margin: `${!isNotMobile ? '10px 0 10px 0 ' : '10px 0 20px 0 '}`,
                      color: `${colors.grey[100]}`,
                      opacity: `${!isNotMobile ? '0' : '1'}`,
-                     pointerEvents:`${!isNotMobile ? 'none' : 'auto'}`,
+                     pointerEvents: `${!isNotMobile ? 'none' : 'auto'}`,
                   }}>
                   {!isCollapsed &&
                      <Box display={'flex'} justifyContent={"space-between"} alignItems={"center"} ml='15px'>
-                        <Typography variant='h4' pt='2px'  color={colors.grey[100]}>ADMINS</Typography>
+                        <Typography variant='h4' pt='2px' color={colors.grey[100]}>ADMINS</Typography>
                         <IconButton>
                            <MenuOpenOutlinedIcon/>
                         </IconButton>
@@ -135,7 +137,10 @@ const MySidebar = () => {
                         m: '10px 0 0 0'
                      }}>ssenick</Typography>
                   <Typography variant={!isCollapsed ? 'h5' : 'h6'}
-                              sx={{color: `${colors.greenAccent[500]}`, fontSize: `${isCollapsed ? '10px' : undefined}`}}>Main
+                              sx={{
+                                 color: `${colors.greenAccent[500]}`,
+                                 fontSize: `${isCollapsed ? '10px' : undefined}`
+                              }}>Main
                      Admin</Typography>
                </Box>
             </Box>
