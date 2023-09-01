@@ -4,7 +4,7 @@ import {DataGrid, GridToolbar} from "@mui/x-data-grid";
 import PostService from "../../../API/postService";
 import {tokens} from "../../../theme";
 import {useFetching} from "../../../hooks/useFetching";
-import {Header,Loading} from "../../../components";
+import {Header, Loading} from "../../../components";
 
 
 const ContactsPage = () => {
@@ -13,6 +13,7 @@ const ContactsPage = () => {
    const colors = tokens(theme.palette.mode)
    const isNonMobil = useMediaQuery('(min-width:600px)');
    const isNonMobil_800 = useMediaQuery('(min-width:800px)');
+
    const [fetchContacts, isLoading, error] = useFetching( async ()=>{
       const {data} = await PostService.getContacts();
       setMockDataContacts(data)

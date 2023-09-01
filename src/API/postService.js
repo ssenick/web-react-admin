@@ -8,27 +8,23 @@ export default class PostService {
       return response.data
    }
    static async getContacts() {
-      const response = await axios.get(`${API_SERVER}mockDataContacts`);
-      return response
+      return  await axios.get(`${API_SERVER}mockDataContacts`);
    }
    static async getInvoices() {
-      const response = await axios.get(`${API_SERVER}mockDataInvoices`);
-      return response
+      return await axios.get(`${API_SERVER}mockDataInvoices`);
    }
    static async getBar() {
-      const response = await axios.get(`${API_SERVER}mockBarData`);
-      return response
+      return await axios.get(`${API_SERVER}mockBarData`);
+
    }
    static async getPie() {
-      const response = await axios.get(`${API_SERVER}mockPieData`);
-      return response
+      return await axios.get(`${API_SERVER}mockPieData`);
+
    }
    static async getLine() {
-      const response = await axios.get(`${API_SERVER}mockLineData`);
-      return response
+      return await axios.get(`${API_SERVER}mockLineData`);
    }
    static async getGeo() {
-      const response = await axios.get(`${API_SERVER}mockGeographyData`);
-      return response
+      return await axios.get(`${API_SERVER}mockGeographyData`);
    }
 }
