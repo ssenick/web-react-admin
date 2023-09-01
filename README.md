@@ -18,4 +18,4 @@ DEMO: https://web-react-admin.ssenick.fun/
 - Yup
 - Nivo (core, pie, line, bar, geo)
 
-![Screenshot](https://github.com/ssenick/web-application-pizza-v2/blob/main/pizzaImage.png)
+![Screenshot](https://github.com/ssenick/web-react-admin/blob/master/src/assets/adminImage.png)
